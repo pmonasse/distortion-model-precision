@@ -13,7 +13,10 @@ The model database of lensfun is in folder db. The script scripts/extract_distor
 ./precision_analysis -d "\<distortion model=poly3 focal=210 k1=0.00324 /\>" poly 4,9
 
 Usage: ./precision_analysis [options] model order,order,...
+
 Options:
+
         -r, --reverse Find inverse model
         -d, --distort=ARG XML line of lensfun db
+
  list of models:  radial  radial_center  radial_odd  radial_center_odd  division  division_center  division_even  division_center_even  FOV  poly
