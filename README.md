@@ -10,7 +10,7 @@ The image coordinates are in [-1,1]. A correct precision is 1e-5, a great one 1e
 
 The model database of lensfun is in folder db. The script scripts/extract_distort_from_xml.sh permits to extract all distortion models from lensfun. You can inject one line in the program:
 
-./precision_analysis -d "<distortion model=poly3 focal=210 k1=0.00324 />" poly 4,9
+./precision_analysis -d "\<distortion model=poly3 focal=210 k1=0.00324 /\>" poly 4,9
 
 Usage: ./precision_analysis [options] model order,order,...
 Options:
