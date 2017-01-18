@@ -17,10 +17,16 @@ ModelPoly::ModelPoly(int order)
 
 /// Redefined from base class
 void ModelPoly::change_order(int order) {
-    assert(order>=1);
+    assert(order>=1 && order>=order_);
     order_ = order;
-    a_.resize((order+1)*(order+2)/2);
-    b_.resize((order+1)*(order+2)/2);
+    // Preserve the coefficients with their assigned order, since they are
+    // stored in decreasing degree
+    std::reverse(a_.begin(), a_.end());
+    std::reverse(b_.begin(), b_.end());
+    a_.resize((order+1)*(order+2)/2, 0);
+    b_.resize((order+1)*(order+2)/2, 0);
+    std::reverse(a_.begin(), a_.end());
+    std::reverse(b_.begin(), b_.end());    
 }
 
 /// Compute powers of i, from 0 to order_ (included)
