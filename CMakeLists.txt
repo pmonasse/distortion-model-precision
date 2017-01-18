@@ -10,6 +10,7 @@ set(SRC
     src/modelFOV.cpp src/modelFOV.h
     src/modelPoly.cpp src/modelPoly.h
     src/modelRadial.cpp src/modelRadial.h
+    src/modelRational.cpp src/modelRational.h
     src/main.cpp)
 
 add_executable(precision_analysis ${SRC})

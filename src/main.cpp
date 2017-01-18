@@ -1,6 +1,7 @@
 #include "modelLensfun.h"
 #include "modelPoly.h"
 #include "modelRadial.h"
+#include "modelRational.h"
 #include "modelDivision.h"
 #include "modelFOV.h"
 #include "cmdLine.h"
@@ -25,7 +26,9 @@ const char* modeles[] = {
 
     "FOV",
 
-    "poly"
+    "poly",
+
+    "rational"
 };
 
 /// Create model corresponding to its name
@@ -50,6 +53,8 @@ Model* create_model(std::string name, int order) {
         return new ModelDivision(order, true, true);
     if(name == "FOV")
         return new ModelFOV(order);
+    if(name == "rational")
+        return new ModelRational(order);
     return 0;
 }
 

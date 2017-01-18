@@ -19,4 +19,4 @@ Options:
         -r, --reverse Find inverse model
         -d, --distort=ARG XML line of lensfun db
 
- list of models:  radial  radial_center  radial_odd  radial_center_odd  division  division_center  division_even  division_center_even  FOV  poly
+ list of models:  radial  radial_center  radial_odd  radial_center_odd  division  division_center  division_even  division_center_even  FOV  poly  rational
