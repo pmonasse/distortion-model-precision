@@ -98,20 +98,21 @@ Model* decode_model(std::string name) {
     std::stringstream s(name.substr(pos+field.size()));
     std::string str; s>>str;
     if(str == "ptlens") {
-        flnum a, b, c;
+        flnum a=0, b=0, c=0;
         if(! decode_param(name, "a=", a) ||
            ! decode_param(name, "b=", b) ||
            ! decode_param(name, "c=", c))
-            return 0;
+            std::cerr << "An expected field a, b, or c could not be decoded in "
+                      << "string:\n" << name << std::endl;
         return new ModelLensfun(a, b, c);
     }
     if(str == "poly3" || str == "poly5") {
-        flnum k1;
+        flnum k1=0;
         if(! decode_param(name, "k1=", k1))
             return 0;
         if(str == "poly3")
             return new ModelLensfun(k1);
-        flnum k2;
+        flnum k2=0;
         if(! decode_param(name, "k2=", k2))
             return 0;
         return new ModelLensfun(k1,k2);
@@ -191,6 +192,10 @@ int main(int argc, char* argv[]) {
         m = new ModelLensfun(a, b, c);
     } else
         m = decode_model(distort_model);
+    if(!m) {
+        std::cerr << "Could not decode distortion model" << std::endl;
+        return 1;
+    }
 
     const int n=nbPoints*nbPoints;
 
